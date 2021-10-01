@@ -5,6 +5,9 @@ RSpec.describe 'Creating a book', type: :feature do
   scenario 'valid inputs' do
     visit new_book_path
     fill_in 'Title', with: 'harry potter'
+	fill_in 'Author', with: 'peter pan'
+	fill_in 'Price', with: '10'
+	fill_in 'Date', with: '2000-10-10'
     click_on 'Create Book'
     visit books_path
     expect(page).to have_content('harry potter')
@@ -13,9 +16,13 @@ end
 RSpec.describe 'Creating an author', type: :feature do
   scenario 'valid inputs' do
     visit new_book_path
-    fill_in 'Author', with: 'peter pan'
+    fill_in 'Title', with: 'harry potter'
+	fill_in 'Author', with: 'peter pan'
+	fill_in 'Price', with: '10'
+	fill_in 'Date', with: '2000-10-10'
     click_on 'Create Book'
     visit books_path
+	click_on 'Show'
     expect(page).to have_content('peter pan')
   end
 end
@@ -23,9 +30,13 @@ end
 RSpec.describe 'Creating a price', type: :feature do
   scenario 'valid inputs' do
     visit new_book_path
-    fill_in 'Price', with: '10'
+    fill_in 'Title', with: 'harry potter'
+	fill_in 'Author', with: 'peter pan'
+	fill_in 'Price', with: '10'
+	fill_in 'Date', with: '2000-10-10'
     click_on 'Create Book'
     visit books_path
+	click_on 'Show'
     expect(page).to have_content('10')
   end
 end
@@ -33,9 +44,13 @@ end
 RSpec.describe 'Creating a date', type: :feature do
   scenario 'valid inputs' do
     visit new_book_path
-    fill_in 'Date', with: '10/10/10'
+    fill_in 'Title', with: 'harry potter'
+	fill_in 'Author', with: 'peter pan'
+	fill_in 'Price', with: '10'
+	fill_in 'Date', with: '2000-10-10'
     click_on 'Create Book'
     visit books_path
-    expect(page).to have_content('10/10/10')
+	click_on 'Show'
+    expect(page).to have_content('2000-10-10')
   end
 end
